@@ -1,5 +1,38 @@
 (function ($) {
     "use strict";
+
+    // Función para calcular y actualizar el total del carrito
+    function updateCartTotal() {
+        let subtotal = 0;
+        const shipping = parseFloat($('#shipping-cost').text().replace('$', ''));
+        
+        // Iterar sobre cada fila de producto en el carrito
+        $('.cart-item').each(function() {
+            const $row = $(this);
+            const price = parseFloat($row.data('price'));
+            const quantity = parseInt($row.find('.item-quantity').val());
+            const itemTotal = price * quantity;
+            
+            // Actualizar el total de la fila
+            $row.find('.item-total-display').text(`$${itemTotal}`);
+            
+            subtotal += itemTotal;
+        });
+
+        // Actualizar los valores en el resumen del carrito
+        $('#subtotal-price').text(`$${subtotal}`);
+        const total = subtotal + shipping;
+        $('#total-price').text(`$${total}`);
+
+        // Mostrar un mensaje si el carrito está vacío
+        if (subtotal === 0) {
+            $('#cart-items-body').html('<tr><td colspan="5" class="text-center p-5">Tu carrito de compras está vacío.</td></tr>');
+            $('#proceed-to-checkout').prop('disabled', true);
+            $('#total-price').text('$0');
+        } else {
+            $('#proceed-to-checkout').prop('disabled', false);
+        }
+    }
     
     // Dropdown on mouse hover
     $(document).ready(function () {
@@ -16,6 +49,9 @@
         }
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
+
+        // Llamar a la función de cálculo inicial al cargar la página
+        updateCartTotal();
     });
     
     
@@ -84,21 +120,53 @@
     });
 
 
-    // Product Quantity
-    $('.quantity button').on('click', function () {
+    // Product Quantity (Actualizado para el cálculo de totales)
+    $('#cart-items-body').on('click', '.quantity button', function () {
         var button = $(this);
-        var oldValue = button.parent().parent().find('input').val();
+        var $input = button.closest('.quantity').find('.item-quantity');
+        var oldValue = parseInt($input.val());
+        var newVal;
+
         if (button.hasClass('btn-plus')) {
-            var newVal = parseFloat(oldValue) + 1;
+            newVal = oldValue + 1;
         } else {
-            if (oldValue > 0) {
-                var newVal = parseFloat(oldValue) - 1;
+            // Asegura que la cantidad no baje de 1
+            if (oldValue > 1) {
+                newVal = oldValue - 1;
             } else {
-                newVal = 0;
+                newVal = 1;
             }
         }
-        button.parent().parent().find('input').val(newVal);
+        
+        $input.val(newVal);
+        updateCartTotal(); // Recalcular totales después de cambiar la cantidad
+    });
+
+    // Eliminar producto
+    $('#cart-items-body').on('click', '.btn-remove', function () {
+        // Encontrar la fila del producto (el tr) y eliminarla
+        $(this).closest('.cart-item').remove();
+        updateCartTotal(); // Recalcular totales después de eliminar un producto
+        alert("¡Producto eliminado del carrito!");
+    });
+
+    // Simular Proceder al Pago
+    $('#proceed-to-checkout').on('click', function(e) {
+        e.preventDefault();
+        
+        // Simulación de validación
+        const totalText = $('#total-price').text();
+        if (totalText === '$10' || totalText === '$0') { // Solo el costo de envío o vacío
+            alert("Tu carrito está vacío. ¡Añade productos antes de proceder al pago!");
+            return;
+        }
+        
+        // Simulación de proceso de compra exitoso
+        alert(`¡Felicidades! Se ha simulado la compra por un total de ${totalText}. Recibirás un correo de confirmación. ¡Gracias por tu compra en EShopper!`);
+        
+        // Opcional: limpiar el carrito después de la "compra" simulada
+        // $('#cart-items-body').empty(); 
+        // updateCartTotal(); 
     });
     
 })(jQuery);
-
