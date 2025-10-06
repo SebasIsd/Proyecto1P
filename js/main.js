@@ -1,41 +1,122 @@
 (function ($) {
     "use strict";
 
-    // Función para calcular y actualizar el total del carrito
+    // --- FUNCIONES CENTRALES DE GESTIÓN DEL CARRITO ---
+
+    // 1. Obtiene el carrito del localStorage (Fuente de verdad)
+    function getCart() {
+        const cartJson = localStorage.getItem('cartItems');
+        return cartJson ? JSON.parse(cartJson) : [];
+    }
+
+    // 2. Guarda el carrito en el localStorage
+    function saveCart(cart) {
+        localStorage.setItem('cartItems', JSON.stringify(cart));
+    }
+
+    // 3. Actualiza el contador del carrito en el navbar (ID: #cart-count)
+    function updateCartCounter() {
+        const cart = getCart();
+        let totalQuantity = 0;
+        
+        // Suma la cantidad de cada producto en el carrito
+        cart.forEach(item => {
+            totalQuantity += item.quantity;
+        });
+
+        $('#cart-count').text(totalQuantity);
+    }
+    
+    // 4. Añade o incrementa un producto al carrito
+    function addToCart(itemDetails) {
+        let cart = getCart();
+        const existingItemIndex = cart.findIndex(item => item.id === itemDetails.id);
+
+        if (existingItemIndex > -1) {
+            // Si el producto ya existe, incrementa la cantidad
+            cart[existingItemIndex].quantity += itemDetails.quantity;
+        } else {
+            // Si es un producto nuevo, añádelo
+            cart.push(itemDetails);
+        }
+
+        saveCart(cart);
+        updateCartCounter();
+        alert(`¡"${itemDetails.name}" añadido al carrito! Cantidad: ${itemDetails.quantity}`);
+    }
+
+    // --- LÓGICA DE CART.HTML (Para mantener la compatibilidad con el paso anterior) ---
+
+    // Función que sincroniza los cambios en el DOM de cart.html con localStorage y actualiza el contador
+    function syncDomToLocalStorage() {
+        const newCartItems = [];
+        $('.cart-item').each(function() {
+            const $row = $(this);
+            const price = parseFloat($row.data('price'));
+            const quantity = parseInt($row.find('.item-quantity').val());
+            const name = $row.find('td:first').text().trim().replace(/.*?\s/, ''); 
+            const id = $row.data('id') || name.replace(/\s/g, '-').toLowerCase(); // ID o nombre
+
+            if (quantity > 0) {
+                 newCartItems.push({
+                    id: id.toString(),
+                    name: name,
+                    price: price,
+                    quantity: quantity
+                });
+            }
+        });
+        saveCart(newCartItems); // Guarda el nuevo estado del carrito
+        updateCartCounter();
+    }
+    
+    // Función para calcular y actualizar el total del carrito (DOM)
     function updateCartTotal() {
         let subtotal = 0;
-        const shipping = parseFloat($('#shipping-cost').text().replace('$', ''));
+        const shippingElement = $('#shipping-cost');
+        const shipping = shippingElement.length ? parseFloat(shippingElement.text().replace('$', '')) : 10;
         
-        // Iterar sobre cada fila de producto en el carrito
+        // Recorre el DOM para calcular
         $('.cart-item').each(function() {
             const $row = $(this);
             const price = parseFloat($row.data('price'));
             const quantity = parseInt($row.find('.item-quantity').val());
             const itemTotal = price * quantity;
             
-            // Actualizar el total de la fila
             $row.find('.item-total-display').text(`$${itemTotal}`);
-            
             subtotal += itemTotal;
         });
 
-        // Actualizar los valores en el resumen del carrito
+        // Actualizar totales en el resumen
         $('#subtotal-price').text(`$${subtotal}`);
         const total = subtotal + shipping;
         $('#total-price').text(`$${total}`);
 
-        // Mostrar un mensaje si el carrito está vacío
         if (subtotal === 0) {
+            // Manejar carrito vacío
             $('#cart-items-body').html('<tr><td colspan="5" class="text-center p-5">Tu carrito de compras está vacío.</td></tr>');
             $('#proceed-to-checkout').prop('disabled', true);
             $('#total-price').text('$0');
         } else {
             $('#proceed-to-checkout').prop('disabled', false);
         }
+
+        // Sincronizar los cambios del DOM (ej. delete, quantity change) con localStorage
+        syncDomToLocalStorage();
     }
     
-    // Dropdown on mouse hover
+    // --- MANEJADORES DE EVENTOS GLOBALES ---
+
     $(document).ready(function () {
+        // Inicializar el contador del carrito al cargar cualquier página
+        updateCartCounter();
+        
+        // Si estamos en cart.html, realizar el cálculo inicial
+        if ($('#cart-items-body').length) {
+            updateCartTotal();
+        }
+
+        // Resto de la inicialización de la plantilla (toggleNavbarMethod, etc.)
         function toggleNavbarMethod() {
             if ($(window).width() > 992) {
                 $('.navbar .dropdown').on('mouseover', function () {
@@ -49,11 +130,7 @@
         }
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
-
-        // Llamar a la función de cálculo inicial al cargar la página
-        updateCartTotal();
     });
-    
     
     // Back to top button
     $(window).scroll(function () {
@@ -68,59 +145,19 @@
         return false;
     });
 
-
-    // Vendor carousel
+    // Vendor carousel & Related carousel (Mantengo las funciones de la plantilla)
     $('.vendor-carousel').owlCarousel({
-        loop: true,
-        margin: 29,
-        nav: false,
-        autoplay: true,
-        smartSpeed: 1000,
-        responsive: {
-            0:{
-                items:2
-            },
-            576:{
-                items:3
-            },
-            768:{
-                items:4
-            },
-            992:{
-                items:5
-            },
-            1200:{
-                items:6
-            }
-        }
+        loop: true, margin: 29, nav: false, autoplay: true, smartSpeed: 1000,
+        responsive: { 0:{ items:2 }, 576:{ items:3 }, 768:{ items:4 }, 992:{ items:5 }, 1200:{ items:6 } }
     });
-
-
-    // Related carousel
     $('.related-carousel').owlCarousel({
-        loop: true,
-        margin: 29,
-        nav: false,
-        autoplay: true,
-        smartSpeed: 1000,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:2
-            },
-            768:{
-                items:3
-            },
-            992:{
-                items:4
-            }
-        }
+        loop: true, margin: 29, nav: false, autoplay: true, smartSpeed: 1000,
+        responsive: { 0:{ items:1 }, 576:{ items:2 }, 768:{ items:3 }, 992:{ items:4 } }
     });
 
+    // --- LÓGICA DE ACCIÓN DEL CARRITO (cart.html) ---
 
-    // Product Quantity (Actualizado para el cálculo de totales)
+    // A. Actualizar cantidad
     $('#cart-items-body').on('click', '.quantity button', function () {
         var button = $(this);
         var $input = button.closest('.quantity').find('.item-quantity');
@@ -130,82 +167,105 @@
         if (button.hasClass('btn-plus')) {
             newVal = oldValue + 1;
         } else {
-            // Asegura que la cantidad no baje de 1
-            if (oldValue > 1) {
-                newVal = oldValue - 1;
-            } else {
-                newVal = 1;
-            }
+            newVal = (oldValue > 1) ? oldValue - 1 : 1;
         }
         
         $input.val(newVal);
-        updateCartTotal(); // Recalcular totales después de cambiar la cantidad
+        updateCartTotal();
     });
 
-    // Eliminar producto
+    // B. Eliminar producto
     $('#cart-items-body').on('click', '.btn-remove', function () {
-        // Encontrar la fila del producto (el tr) y eliminarla
         $(this).closest('.cart-item').remove();
-        updateCartTotal(); // Recalcular totales después de eliminar un producto
+        updateCartTotal();
         alert("¡Producto eliminado del carrito!");
     });
-
-    // Simular Proceder al Pago
+    
+    // C. Proceder al Pago (Usando la estructura de localStorage)
     $('#proceed-to-checkout').on('click', function(e) {
         e.preventDefault();
         
-        // Simulación de validación
-        const totalText = $('#total-price').text();
-        if (totalText === '$10' || totalText === '$0') { // Solo el costo de envío o vacío
+        // Usar los datos de localStorage que se sincronizaron en updateCartTotal()
+        const cart = getCart();
+
+        if (cart.length === 0) { 
             alert("Tu carrito está vacío. ¡Añade productos antes de proceder al pago!");
             return;
         }
-        
-        // Simulación de proceso de compra exitoso
-        alert(`¡Felicidades! Se ha simulado la compra por un total de ${totalText}. Recibirás un correo de confirmación. ¡Gracias por tu compra en EShopper!`);
-        
-        // Opcional: limpiar el carrito después de la "compra" simulada
-        // $('#cart-items-body').empty(); 
-        // updateCartTotal(); 
-    });
-        $('#proceed-to-checkout').on('click', function(e) {
-        e.preventDefault();
-        
-        // 1. Obtener los datos del carrito
-        const cartItems = [];
-        $('.cart-item').each(function() {
-            const $row = $(this);
-            const price = parseFloat($row.data('price'));
-            const quantity = parseInt($row.find('.item-quantity').val());
-            const name = $row.find('td:first').text().trim().replace(/.*?\s/, ''); // Obtener solo el nombre del producto
-            const totalItem = price * quantity;
 
-            cartItems.push({
-                name: name,
-                price: price,
-                quantity: quantity,
-                total: totalItem
-            });
+        // Recalcular los totales finales para el checkout
+        let subtotal = 0;
+        cart.forEach(item => {
+            subtotal += item.price * item.quantity;
         });
 
-        const subtotal = parseFloat($('#subtotal-price').text().replace('$', ''));
-        const shipping = parseFloat($('#shipping-cost').text().replace('$', ''));
-        const total = parseFloat($('#total-price').text().replace('$', ''));
-
+        const shippingElement = $('#shipping-cost');
+        const shipping = shippingElement.length ? parseFloat(shippingElement.text().replace('$', '')) : 10;
+        const total = subtotal + shipping;
+        
         const checkoutData = {
-            items: cartItems,
+            items: cart,
             subtotal: subtotal,
             shipping: shipping,
             total: total
         };
-        
-        // 2. Guardar los datos en localStorage
-        // Guardar como JSON string
+
+        // Guardar los datos de checkout
         localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
         
-        // 3. Redirigir al usuario
+        // Redirigir al usuario
         window.location.href = 'checkout.html';
     });
     
-})(jQuery);
+    // --- LÓGICA AÑADIR AL CARRITO (shop.html y detail.html) ---
+    
+    // 1. Manejador para botones en shop.html (clase 'add-to-cart-btn')
+    $('body').on('click', '.add-to-cart-btn', function(e) {
+        e.preventDefault();
+        const $product = $(this).closest('[data-id]'); 
+        
+        const itemDetails = {
+            id: $product.data('id').toString(),
+            name: $product.data('name') || 'Producto Tienda',
+            price: parseFloat($product.data('price')) || 0,
+            quantity: 1 // Siempre añade 1 por defecto
+        };
 
+        if (itemDetails.price > 0) {
+            addToCart(itemDetails);
+        } else {
+            alert('Error: No se pudo obtener el precio del producto.');
+        }
+    });
+
+    // 2. Manejador para el botón en detail.html (ID 'add-to-cart-detail-btn')
+    $('#add-to-cart-detail-btn').on('click', function(e) {
+        e.preventDefault();
+
+        // Obtener datos del producto y cantidad
+        const $productContainer = $(this).closest('.row').find('.col-lg-7').first();
+        const $nameElement = $productContainer.find('.h4').first();
+        const $quantityInput = $('#detail-quantity');
+
+        const priceText = $productContainer.find('.text-primary.mr-2').first().text();
+        const price = parseFloat(priceText.replace(/[^0-9.]/g, '')) || 0;
+        const name = $nameElement.text().trim() || 'Producto de Detalle';
+        const quantity = parseInt($quantityInput.val()) || 1;
+        const id = $productContainer.closest('[data-id]').data('id') || name.replace(/\s/g, '-').toLowerCase();
+
+        if (price === 0 || quantity === 0) {
+            alert("Error: No se pudo obtener el precio o la cantidad es cero.");
+            return;
+        }
+
+        const itemDetails = {
+            id: id.toString(),
+            name: name,
+            price: price,
+            quantity: quantity
+        };
+
+        addToCart(itemDetails);
+    });
+    
+})(jQuery);
