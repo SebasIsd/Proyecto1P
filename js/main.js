@@ -168,5 +168,44 @@
         // $('#cart-items-body').empty(); 
         // updateCartTotal(); 
     });
+        $('#proceed-to-checkout').on('click', function(e) {
+        e.preventDefault();
+        
+        // 1. Obtener los datos del carrito
+        const cartItems = [];
+        $('.cart-item').each(function() {
+            const $row = $(this);
+            const price = parseFloat($row.data('price'));
+            const quantity = parseInt($row.find('.item-quantity').val());
+            const name = $row.find('td:first').text().trim().replace(/.*?\s/, ''); // Obtener solo el nombre del producto
+            const totalItem = price * quantity;
+
+            cartItems.push({
+                name: name,
+                price: price,
+                quantity: quantity,
+                total: totalItem
+            });
+        });
+
+        const subtotal = parseFloat($('#subtotal-price').text().replace('$', ''));
+        const shipping = parseFloat($('#shipping-cost').text().replace('$', ''));
+        const total = parseFloat($('#total-price').text().replace('$', ''));
+
+        const checkoutData = {
+            items: cartItems,
+            subtotal: subtotal,
+            shipping: shipping,
+            total: total
+        };
+        
+        // 2. Guardar los datos en localStorage
+        // Guardar como JSON string
+        localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+        
+        // 3. Redirigir al usuario
+        window.location.href = 'checkout.html';
+    });
     
 })(jQuery);
+
