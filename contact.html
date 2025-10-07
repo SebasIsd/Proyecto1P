@@ -18,6 +18,57 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
+    <style>/* ==================================== */
+/* HOVER PARA LA SECCIÓN DEL EQUIPO (Team Carousel) */
+/* ==================================== */
+
+.team-item .position-relative {
+    overflow: hidden; 
+}
+
+.team-item .team-social {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Oculto por defecto */
+    background: rgba(255, 255, 255, 0.85); /* Fondo semitransparente al hacer hover */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+}
+
+/* Mostrar la capa social al hacer hover sobre el contenedor principal */
+.team-item:hover .team-social {
+    opacity: 1;
+}
+
+/* Efecto de animación para los iconos (opcional) */
+.team-item .team-social a {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.team-item:hover .team-social a:nth-child(1) {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+
+.team-item:hover .team-social a:nth-child(2) {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.2s;
+}
+
+.team-item:hover .team-social a:nth-child(3) {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.3s;
+}</style>
 </head>
 
 <body>
@@ -70,16 +121,6 @@
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border">
-                    <i class="fas fa-heart text-primary"></i>
-                    <span class="badge">0</span>
-                </a>
-                <a href="cart.html" class="btn border">
-                    <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge" id="cart-count">0</span>
-                </a>
-            </div>
         </div>
     </div>
     <div class="container-fluid">
@@ -131,10 +172,6 @@
                                 </div>
                             </div>
                             <a href="contact.html" class="nav-item nav-link active">Contacto</a>
-                        </div>
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Iniciar Sesión</a>
-                            <a href="" class="nav-item nav-link">Registrarse</a>
                         </div>
                     </div>
                 </nav>
@@ -189,21 +226,19 @@
             </div>
             <div class="col-lg-5 mb-5">
                 <div class="d-flex flex-column mb-3">
-                    <iframe style="width: 100%; height: 250px;"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.019551357007!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4e02925c381c6203%3A0xc175486821d3f4b4!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-                    frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.839197989558!2d-78.62853652571559!3d-1.2693705987185415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d38225e088295f%3A0xb16c26da66e6e4b3!2sUniversidad%20T%C3%A9cnica%20de%20Ambato!5e0!3m2!1ses-419!2sec!4v1759794054700!5m2!1ses-419!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="d-flex flex-column mb-3">
                     <p class="text-secondary text-uppercase mb-2">Oficina Principal</p>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-                    <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Avenida los chásquis, Ambato, ECU</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>sdsnt2003@gmail.com</p>
+                    <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+593 345 67890</p>
                 </div>
                 <div class="d-flex flex-column">
                     <p class="text-secondary text-uppercase mb-2">Soporte al Cliente</p>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>456 Customer St, London, UK</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>support@example.com</p>
-                    <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67891</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Av. Bolivariana, Ambato, ECU</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>support@gmail.com</p>
+                    <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+593 345 67891</p>
                 </div>
             </div>
         </div>
@@ -218,60 +253,45 @@
                     
                     <div class="team-item text-center">
                         <div class="position-relative overflow-hidden mb-4" style="height: 250px; width: 250px; margin: 0 auto;">
-                            <img class="img-fluid w-100 h-100" src="img/dev-1.jpg" alt="Desarrollador 1" style="object-fit: cover;">
+                            <img class="img-fluid w-100 h-100" src="img/yo.jpg" alt="Desarrollador 1" style="object-fit: cover;">
                             <div class="team-social d-flex align-items-center justify-content-center">
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
+                              <a class="btn btn-outline-primary btn-square mr-2" href="https://github.com/SebasIsd"><i class="fab fa-github"></i></a>
+                              <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/sebas.santana.531037"><i class="fab fa-facebook-f"></i></a>
+                              <a class="btn btn-outline-primary btn-square" href="https://wa.me/593995781009" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                             </div>
                         </div>
-                        <h5 class="font-weight-bold">Ana Morales</h5>
-                        <p class="m-0">Líder de Desarrollo / Full-Stack</p>
-                        <small class="text-muted">"Apasionada por el código limpio y el diseño UX."</small>
-                    </div>
-
-                    <div class="team-item text-center">
-                        <div class="position-relative overflow-hidden mb-4" style="height: 250px; width: 250px; margin: 0 auto;">
-                            <img class="img-fluid w-100 h-100" src="img/dev-2.jpg" alt="Desarrollador 2" style="object-fit: cover;">
-                            <div class="team-social d-flex align-items-center justify-content-center">
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <h5 class="font-weight-bold">Roberto Gámez</h5>
-                        <p class="m-0">Especialista en Back-End</p>
-                        <small class="text-muted">"Asegurando la seguridad y escalabilidad del servidor."</small>
-                    </div>
-
-                    <div class="team-item text-center">
-                        <div class="position-relative overflow-hidden mb-4" style="height: 250px; width: 250px; margin: 0 auto;">
-                            <img class="img-fluid w-100 h-100" src="img/dev-3.jpg" alt="Desarrollador 3" style="object-fit: cover;">
-                            <div class="team-social d-flex align-items-center justify-content-center">
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <h5 class="font-weight-bold">Sofía López</h5>
-                        <p class="m-0">Diseñadora UI/Front-End</p>
+                        <h5 class="font-weight-bold">Sebastian Santana</h5>
+                        <p class="m-0">Líder de Desarrollo / Front-End</p>
                         <small class="text-muted">"Convirtiendo ideas en experiencias visuales impactantes."</small>
                     </div>
 
                     <div class="team-item text-center">
                         <div class="position-relative overflow-hidden mb-4" style="height: 250px; width: 250px; margin: 0 auto;">
-                            <img class="img-fluid w-100 h-100" src="img/dev-4.jpg" alt="Desarrollador 4" style="object-fit: cover;">
+                            <img class="img-fluid w-100 h-100" src="img/vivi.jpg" alt="Desarrollador 2" style="object-fit: cover;">
                             <div class="team-social d-flex align-items-center justify-content-center">
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
+                              <a class="btn btn-outline-primary btn-square mr-2" href="https://github.com/maribelsailema"><i class="fab fa-github"></i></a>
+                              <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/viviana.sarco.7"><i class="fab fa-facebook-f"></i></a>
+                              <a class="btn btn-outline-primary btn-square" href="https://wa.me/593988519822" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                             </div>
                         </div>
-                        <h5 class="font-weight-bold">Daniel Pardo</h5>
-                        <p class="m-0">Especialista en QA & Testing</p>
-                        <small class="text-muted">"El guardián de la calidad, buscando errores antes que tú."</small>
+                        <h5 class="font-weight-bold">Vivina Sarco</h5>
+                        <p class="m-0">Encargada Back-End</p>
+                        <small class="text-muted">"Encargada en la configuracion del Back"</small>
                     </div>
 
+                    <div class="team-item text-center">
+                        <div class="position-relative overflow-hidden mb-4" style="height: 250px; width: 250px; margin: 0 auto;">
+                            <img class="img-fluid w-100 h-100" src="img/alex.jpg" alt="Desarrollador 3" style="object-fit: cover;">
+                            <div class="team-social d-flex align-items-center justify-content-center">
+                              <a class="btn btn-outline-primary btn-square mr-2" href="https://github.com/alexJonarey"><i class="fab fa-github"></i></a>
+                              <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                              <a class="btn btn-outline-primary btn-square" href="https://wa.me/593998316691" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                             </div>
+                        </div>
+                        <h5 class="font-weight-bold">Alex Reyes</h5>
+                        <p class="m-0">Experto en soporte técnico y Back-End</p>
+                        <small class="text-muted">"El guardián de la calidad, buscando errores antes que tú."</small>
+                    </div>
                 </div>
             </div>
         </div>
