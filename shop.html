@@ -261,14 +261,15 @@
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Buscar por nombre">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text bg-transparent text-primary">
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                    </div>
-                                </div>
+                               <div class="input-group">
+  <input type="text" id="search-input" class="form-control" placeholder="Buscar por nombre">
+  <div class="input-group-append">
+    <span class="input-group-text bg-transparent text-primary">
+      <i class="fa fa-search"></i>
+    </span>
+  </div>
+</div>
+
                             </form>
                             <div class="dropdown ml-4">
                                 <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
@@ -561,6 +562,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   applyFilter();
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('search-input');
+  const products = document.querySelectorAll('.product-item');
+
+  // 🔍 Función de búsqueda en tiempo real
+  function searchProducts() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+
+    products.forEach(p => {
+      const name = p.getAttribute('data-name').toLowerCase();
+      const card = p.closest('.col-lg-4, .col-md-6, .col-sm-12');
+
+      // Verifica si el nombre contiene el texto buscado
+      if (name.includes(searchTerm)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Escucha cada vez que el usuario escribe
+  searchInput.addEventListener('input', searchProducts);
 });
 </script>
 
