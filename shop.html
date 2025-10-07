@@ -496,6 +496,74 @@
     <script src="mail/contact.js"></script>
 
     <script src="js/main.js"></script>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const products = document.querySelectorAll('.product-item');
+  const rangeCheckboxes = document.querySelectorAll('input[type="checkbox"][id^="price-"]');
+  const allCheckbox = document.getElementById('price-all');
+
+  function applyFilter() {
+    const activeRanges = [];
+    let showAll = allCheckbox.checked;
+
+    if (!showAll) {
+      rangeCheckboxes.forEach(cb => {
+        if (cb.checked) {
+          switch (cb.id) {
+            case 'price-1': activeRanges.push([0, 100]); break;
+            case 'price-2': activeRanges.push([100, 200]); break;
+            case 'price-3': activeRanges.push([200, 300]); break;
+            case 'price-4': activeRanges.push([300, 400]); break;
+            case 'price-5': activeRanges.push([400, 500]); break;
+          }
+        }
+      });
+
+      if (activeRanges.length === 0) {
+        showAll = true;
+        allCheckbox.checked = true;
+      }
+    }
+
+    products.forEach(p => {
+      const price = parseFloat(p.getAttribute('data-price'));
+      const card = p.closest('.col-lg-4, .col-md-6, .col-sm-12');
+      const match = activeRanges.some(([min, max]) => price >= min && price <= max);
+      card.style.display = showAll || match ? 'block' : 'none';
+    });
+  }
+
+  // ✅ Arreglado: “Todos los precios”
+  allCheckbox.addEventListener('change', () => {
+    if (allCheckbox.checked) {
+      // Espera unos milisegundos antes de desmarcar los otros checkboxes
+      setTimeout(() => {
+        rangeCheckboxes.forEach(cb => cb.checked = false);
+        applyFilter();
+      }, 10);
+    } else {
+      applyFilter();
+    }
+  });
+
+  // Rango clickeado
+  rangeCheckboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (cb.checked) {
+        allCheckbox.checked = false;
+      } else {
+        const anyChecked = Array.from(rangeCheckboxes).some(c => c.checked);
+        if (!anyChecked) allCheckbox.checked = true;
+      }
+      applyFilter();
+    });
+  });
+
+  applyFilter();
+});
+</script>
+
 </body>
 
 </html>
