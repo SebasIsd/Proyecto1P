@@ -261,14 +261,15 @@
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Buscar por nombre">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text bg-transparent text-primary">
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                    </div>
-                                </div>
+                               <div class="input-group">
+  <input type="text" id="search-input" class="form-control" placeholder="Buscar por nombre">
+  <div class="input-group-append">
+    <span class="input-group-text bg-transparent text-primary">
+      <i class="fa fa-search"></i>
+    </span>
+  </div>
+</div>
+
                             </form>
                             <div class="dropdown ml-4">
                                 <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
@@ -496,6 +497,100 @@
     <script src="mail/contact.js"></script>
 
     <script src="js/main.js"></script>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const products = document.querySelectorAll('.product-item');
+  const rangeCheckboxes = document.querySelectorAll('input[type="checkbox"][id^="price-"]');
+  const allCheckbox = document.getElementById('price-all');
+
+  function applyFilter() {
+    const activeRanges = [];
+    let showAll = allCheckbox.checked;
+
+    if (!showAll) {
+      rangeCheckboxes.forEach(cb => {
+        if (cb.checked) {
+          switch (cb.id) {
+            case 'price-1': activeRanges.push([0, 100]); break;
+            case 'price-2': activeRanges.push([100, 200]); break;
+            case 'price-3': activeRanges.push([200, 300]); break;
+            case 'price-4': activeRanges.push([300, 400]); break;
+            case 'price-5': activeRanges.push([400, 500]); break;
+          }
+        }
+      });
+
+      if (activeRanges.length === 0) {
+        showAll = true;
+        allCheckbox.checked = true;
+      }
+    }
+
+    products.forEach(p => {
+      const price = parseFloat(p.getAttribute('data-price'));
+      const card = p.closest('.col-lg-4, .col-md-6, .col-sm-12');
+      const match = activeRanges.some(([min, max]) => price >= min && price <= max);
+      card.style.display = showAll || match ? 'block' : 'none';
+    });
+  }
+
+  // ✅ Arreglado: “Todos los precios”
+  allCheckbox.addEventListener('change', () => {
+    if (allCheckbox.checked) {
+      // Espera unos milisegundos antes de desmarcar los otros checkboxes
+      setTimeout(() => {
+        rangeCheckboxes.forEach(cb => cb.checked = false);
+        applyFilter();
+      }, 10);
+    } else {
+      applyFilter();
+    }
+  });
+
+  // Rango clickeado
+  rangeCheckboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (cb.checked) {
+        allCheckbox.checked = false;
+      } else {
+        const anyChecked = Array.from(rangeCheckboxes).some(c => c.checked);
+        if (!anyChecked) allCheckbox.checked = true;
+      }
+      applyFilter();
+    });
+  });
+
+  applyFilter();
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('search-input');
+  const products = document.querySelectorAll('.product-item');
+
+  // 🔍 Función de búsqueda en tiempo real
+  function searchProducts() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+
+    products.forEach(p => {
+      const name = p.getAttribute('data-name').toLowerCase();
+      const card = p.closest('.col-lg-4, .col-md-6, .col-sm-12');
+
+      // Verifica si el nombre contiene el texto buscado
+      if (name.includes(searchTerm)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Escucha cada vez que el usuario escribe
+  searchInput.addEventListener('input', searchProducts);
+});
+</script>
+
 </body>
 
 </html>
