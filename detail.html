@@ -22,13 +22,13 @@
 
 <style>
     #product-carousel .carousel-inner {
-    height: 400px; /* altura fija para todas las imágenes */
+    height: 400px; 
 }
 
 #product-carousel .carousel-inner img {
-    width: 100%;       /* ocupa todo el ancho del contenedor */
-    height: 100%;      /* ocupa toda la altura del contenedor */
-    object-fit: cover; /* recorta la imagen si es necesario para llenar el contenedor */
+    width: 100%;      
+    height: 100%;      
+    object-fit: cover; 
 }
 
 </style>
@@ -164,13 +164,25 @@
             <div class="col-lg-5 pb-5">
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
-                        <div class="carousel-item active" data-name="Vestido de Seda Exclusivo" data-price="$450.00" data-description="Vestido de seda premium, corte elegante y ajuste perfecto. Ideal para eventos formales o una noche de lujo.">
+                        <div class="carousel-item active" data-name="Vestido de Seda Exclusivo" 
+                        data-price="$450.00" 
+                        data-short-description="Vestido de seda premium, corte elegante y ajuste perfecto. Ideal para eventos formales o una noche de lujo."
+                        data-additional="Este vestido está confeccionado principalmente en Chifón o Gasa de Poliéster, proporcionando un acabado vaporoso y etéreo, e incluye un forro interior para mayor comodidad. El largo midi y el corte con volantes le otorgan un estilo romántico y elegante. Se recomienda lavar a mano o en ciclo delicado para proteger la caída y la textura del tejido, y cuenta con un cierre de cremallera oculta en la espalda."
+                        data-long-description="Un vestido que evoca la frescura y la ligereza de la temporada. Este Vestido Midi presenta un hermoso y sutil estampado abstracto o floral en suaves tonos de lavanda y malva sobre un tejido vaporoso y translúcido. El diseño destaca por sus tirantes anchos con volantes que cubren delicadamente los hombros y el escote, añadiendo un toque romántico y femenino. Su corte es ajustado en la parte superior y cae con suavidad hasta la pantorrilla, con una falda fluida y escalonada que crea un movimiento etéreo al caminar. Perfecto para eventos de día, bodas en jardín o paseos de verano.">
     <img class="w-100 h-100" src="img/vestido.jpg" alt="Image">
 </div>
-<div class="carousel-item" data-name="Poncho Elegante" data-price="$250.00" data-description="Poncho elegante con diseño único, perfecto para ocasiones especiales.">
+<div class="carousel-item" data-name="Poncho Elegante" 
+data-price="$250.00" 
+data-short-description="Poncho elegante con diseño único, perfecto para ocasiones especiales."
+data-additional="Elaborado en un punto grueso y suave, como Acrílico, este poncho ofrece una calidez acogedora. Su diseño es unitalla (talla única) y presenta un patrón geométrico a cuadros en tonos neutros. Por su naturaleza, se recomienda lavar a mano con agua fría y secar en plano para mantener su forma y evitar que se estire. Es el accesorio ideal para un look casual y de capas en las temporadas más frescas."
+data-long-description="Este elegante y acogedor poncho o chal es la pieza ideal para añadir estilo y calidez a cualquier atuendo. Confeccionado en un punto grueso y suave, presenta un diseño amplio y asimétrico que se adapta a varias tallas y siluetas. El patrón se destaca por un gran diseño a cuadros o rejilla en tonos contrastantes, como el beige/topo y el negro, que le otorgan un aire moderno y atemporal. Su caída fluida y cuello en V abierto permiten usarlo sobre suéteres, blusas o abrigos ligeros, convirtiéndolo en un accesorio esencial para las estaciones de transición y el invierno.">
     <img class="w-100 h-100" src="img/poncho.jpg" alt="Image">
 </div>
-<div class="carousel-item" data-name="Producto 3" data-price="$300.00" data-description="Camisa elegante para su bebé">
+<div class="carousel-item" data-name="Producto 3" 
+data-price="$300.00" 
+data-short-description="Camisa elegante para su bebé"
+data-long-description="¡Lleva el estilo tropical a un nuevo nivel con esta Camisa Hawaiana de diseño vibrante! Perfecta para tu bebé, esta prenda de manga corta presenta un estampado llamativo de palmeras en tonos rosas, azules y morados intensos sobre un fondo negro profundo. Con un corte de cuello clásico y botones frontales a juego, es ideal para un día de playa, una fiesta de verano o cualquier ocasión en la que quieras que tu pequeño destaque. Su diseño fresco y alegre asegura comodidad y un look único."
+data-additional="Confeccionada en un tejido ligero, idealmente 100% Algodón o una mezcla suave, esta camisa tropical garantiza frescura. Su diseño incluye un cuello clásico y un cierre de botones frontales. Para su cuidado, se recomienda lavar a máquina con agua fría en ciclo delicado para preservar la intensidad del estampado. Es perfecta para un estilo casual de verano.">
     <img class="w-100 h-100" src="img/hawai.jpg" alt="Image">
 </div>
 
@@ -197,7 +209,7 @@
         <small class="pt-1">(50 Reseñas)</small>
     </div>
     <h3 id="product-price" class="font-weight-semi-bold mb-4 text-primary mr-2">$450.00</h3> 
-    <p id="product-description" class="mb-4">Vestido de seda premium, corte elegante y ajuste perfecto. Ideal para eventos formales o una noche de lujo.</p>
+    <p id="product-short-description" class="mb-4">Vestido de seda premium, corte elegante y ajuste perfecto. Ideal para eventos formales o una noche de lujo.</p>
 
     <div class="d-flex mb-3">
         <p class="text-dark font-weight-medium mb-0 mr-3">Tallas:</p>
@@ -287,31 +299,15 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="tab-pane-1">
                         <h4 class="mb-3">Descripción del Producto</h4>
-                        <p>Descubre la comodidad sin esfuerzo con el Vestido Corto Serena, una pieza imprescindible para tu guardarropa de clima cálido. Confeccionado con una mezcla premium de lino y algodón, su tejido es increíblemente ligero, transpirable y suave al tacto, manteniéndote fresca incluso en los días más calurosos.</p>
-                        <p>Su silueta fluida, con un delicado escote en V y una falda que cae justo por encima de la rodilla, ofrece un movimiento natural y favorecedor para cualquier figura. Es el lienzo perfecto para cualquier estilo: úsalo con sandalias planas para un look playero o con tacones y accesorios dorados para una cena improvisada. Su forro interior de algodón garantiza cero transparencias, dándote total seguridad.
-
-</p>
+                        <p id="product-long-description">Un vestido que evoca la frescura y la ligereza
+                             de la temporada. Este Vestido Midi presenta un hermoso y sutil estampado abstracto o floral en suaves tonos de lavanda y malva sobre un tejido vaporoso y translúcido. El diseño destaca por sus tirantes anchos con volantes que cubren delicadamente los hombros y el escote, añadiendo un toque romántico y femenino. Su corte es ajustado en la parte superior y cae con suavidad hasta la pantorrilla, con una falda fluida y escalonada que crea un movimiento etéreo al caminar. Perfecto para eventos de día, bodas en jardín o paseos de verano.</p>
+                        <p>Et stet dolor nonumy et nonumy stet, et stet diam et lorem. Dolor at sed et dolor et.</p>
                     </div>
                     <div class="tab-pane fade" id="tab-pane-2">
                         <h4 class="mb-3">Información Adicional</h4>
-                        <p>El Vestido Atena es la definición de sofisticación atemporal. Diseñado para eventos de cóctel o cenas importantes, este vestido midi está hecho de un crepé de poliéster de peso medio que ofrece una estructura definida y una caída impecable. El tejido se siente suntuoso y minimiza las arrugas, ideal para llevarlo directamente desde la maleta.</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item px-0">
-                                        Tejido Crepé Estructurado: Mantiene la forma y minimiza arrugas.
-                                    </li>
-                                    <li class="list-group-item px-0">
-                                        Detalles en Encaje Guipur: Acabado de alta costura y textura de lujo.
-                                    </li>
-                                    <li class="list-group-item px-0">
-                                        Corte Midi con Abertura: Elegancia y facilidad de movimiento.
-                                    </li>
-                                    <li class="list-group-item px-0">
-                                        Cremallera Oculta: Cierre discreto y ajuste perfecto.
-                                    </li>
-                                  </ul> 
-                            </div>
+                        <p id="product-additional-list">Este vestido está confeccionado principalmente en Chifón o Gasa de Poliéster, proporcionando un acabado vaporoso y etéreo, e incluye un forro interior para mayor comodidad. El largo midi y el corte con volantes le otorgan un estilo romántico y elegante. Se recomienda lavar a mano o en ciclo delicado para proteger la caída y la textura del tejido, y cuenta con un cierre de cremallera oculta en la espalda..</p>
+                      
+>>>>>>> 7b16dc9 (Se hace que la informacion sea dinamica para que se muestre de acuerdo a la imagen que se muestre en el carrousel)
                         </div>
                     </div>
                     <div class="tab-pane fade" id="tab-pane-3">
@@ -444,16 +440,43 @@
 
     <script src="js/main.js"></script>
 
-     <script>
+<script>
 $(document).ready(function() {
-    $('#product-carousel').on('slid.bs.carousel', function() {
-        var activeItem = $('#product-carousel .carousel-item.active');
+    // Función para convertir data-additional en lista
+    function renderAdditional(additionalText) {
+        var items = additionalText.split('.'); // separar por puntos
+        var html = '';
+        items.forEach(function(item) {
+            var trimmed = item.trim();
+            if(trimmed.length > 0){
+                html += '<li>' + trimmed + '.</li>'; // agregar punto al final de cada li
+            }
+        });
+        $('#product-additional-list').html(html);
+    }
+
+    // Inicializar con el primer item
+    var firstItem = $('#product-carousel .carousel-item.active');
+    $('#product-name').text(firstItem.data('name'));
+    $('#product-price').text(firstItem.data('price'));
+    $('#product-short-description').text(firstItem.data('short-description'));
+    $('#product-long-description').text(firstItem.data('long-description'));
+    renderAdditional(firstItem.data('additional')); // lista dinámica
+
+    // Evento al cambiar de imagen
+    $('#product-carousel').on('slid.bs.carousel', function () {
+        var activeItem = $(this).find('.carousel-item.active');
         $('#product-name').text(activeItem.data('name'));
         $('#product-price').text(activeItem.data('price'));
-        $('#product-description').text(activeItem.data('description'));
+        $('#product-short-description').text(activeItem.data('short-description'));
+        $('#product-long-description').text(activeItem.data('long-description'));
+        renderAdditional(activeItem.data('additional')); // lista dinámica
     });
 });
 </script>
+
+
+
 </body>
 
 </html>
