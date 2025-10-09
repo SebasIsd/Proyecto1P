@@ -20,6 +20,18 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
+<style>
+    #product-carousel .carousel-inner {
+    height: 400px; /* altura fija para todas las imágenes */
+}
+
+#product-carousel .carousel-inner img {
+    width: 100%;       /* ocupa todo el ancho del contenedor */
+    height: 100%;      /* ocupa toda la altura del contenedor */
+    object-fit: cover; /* recorta la imagen si es necesario para llenar el contenedor */
+}
+
+</style>
 <body>
     <div class="container-fluid">
         <div class="row bg-secondary py-2 px-xl-5">
@@ -94,7 +106,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link" data-toggle="dropdown">Vestidos <i class="fa fa-angle-down float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                <a href="" class="dropdown-item">Vestidos de Hombre</a>
+                   
                                 <a href="" class="dropdown-item">Vestidos de Mujer</a>
                                 <a href="" class="dropdown-item">Vestidos de Bebé</a>
                             </div>
@@ -152,15 +164,16 @@
             <div class="col-lg-5 pb-5">
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
-                        <div class="carousel-item active">
-                            <img class="w-100 h-100" src="img/product-1.jpg" alt="Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="img/product-2.jpg" alt="Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="img/product-3.jpg" alt="Image">
-                        </div>
+                        <div class="carousel-item active" data-name="Vestido de Seda Exclusivo" data-price="$450.00" data-description="Vestido de seda premium, corte elegante y ajuste perfecto. Ideal para eventos formales o una noche de lujo.">
+    <img class="w-100 h-100" src="img/vestido.jpg" alt="Image">
+</div>
+<div class="carousel-item" data-name="Poncho Elegante" data-price="$250.00" data-description="Poncho elegante con diseño único, perfecto para ocasiones especiales.">
+    <img class="w-100 h-100" src="img/poncho.jpg" alt="Image">
+</div>
+<div class="carousel-item" data-name="Producto 3" data-price="$300.00" data-description="Camisa elegante para su bebé">
+    <img class="w-100 h-100" src="img/hawai.jpg" alt="Image">
+</div>
+
                     </div>
                     <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                         <i class="fa fa-2x fa-angle-left text-dark"></i>
@@ -172,100 +185,98 @@
             </div>
 
             <div class="col-lg-7 pb-5">
-                <h3 class="font-weight-semi-bold">Vestido de Seda Exclusivo</h3>
-                <div class="d-flex mb-3">
-                    <div class="text-primary mr-2">
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star-half-alt"></small>
-                        <small class="far fa-star"></small>
-                    </div>
-                    <small class="pt-1">(50 Reseñas)</small>
-                </div>
-                <h3 class="font-weight-semi-bold mb-4 text-primary mr-2">$450.00</h3> 
-                <p class="mb-4">Vestido de seda premium, corte elegante y ajuste perfecto. Ideal para eventos formales o una noche de lujo.</p>
-                <div class="d-flex mb-3">
-                    <p class="text-dark font-weight-medium mb-0 mr-3">Tallas:</p>
-                    <form>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-1" name="size">
-                            <label class="custom-control-label" for="size-1">XS</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-2" name="size">
-                            <label class="custom-control-label" for="size-2">S</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-3" name="size" checked>
-                            <label class="custom-control-label" for="size-3">M</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-4" name="size">
-                            <label class="custom-control-label" for="size-4">L</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-5" name="size">
-                            <label class="custom-control-label" for="size-5">XL</label>
-                        </div>
-                    </form>
-                </div>
-                <div class="d-flex mb-4">
-                    <p class="text-dark font-weight-medium mb-0 mr-3">Colores:</p>
-                    <form>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-1" name="color">
-                            <label class="custom-control-label" for="color-1">Negro</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-2" name="color" checked>
-                            <label class="custom-control-label" for="color-2">Blanco</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-3" name="color">
-                            <label class="custom-control-label" for="color-3">Rojo</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-4" name="color">
-                            <label class="custom-control-label" for="color-4">Azul</label>
-                        </div>
-                    </form>
-                </div>
-                <div class="d-flex align-items-center mb-4 pt-2">
-                    <div class="input-group quantity mr-3" style="width: 130px;">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                        <input type="text" class="form-control bg-secondary text-center" value="1" id="detail-quantity" readonly>
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary px-3" id="add-to-cart-detail-btn"><i class="fas fa-shopping-cart mr-1"></i> Añadir al Carrito</button>
-                </div>
-                <div class="d-flex pt-2">
-                    <p class="text-dark font-weight-medium mb-0 mr-2">Compartir en:</p>
-                    <div class="d-inline-flex">
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-pinterest"></i>
-                        </a>
-                    </div>
-                </div>
+    <h3 id="product-name" class="font-weight-semi-bold">Vestido de Seda Exclusivo</h3>
+    <div class="d-flex mb-3">
+        <div class="text-primary mr-2">
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star-half-alt"></small>
+            <small class="far fa-star"></small>
+        </div>
+        <small class="pt-1">(50 Reseñas)</small>
+    </div>
+    <h3 id="product-price" class="font-weight-semi-bold mb-4 text-primary mr-2">$450.00</h3> 
+    <p id="product-description" class="mb-4">Vestido de seda premium, corte elegante y ajuste perfecto. Ideal para eventos formales o una noche de lujo.</p>
+
+    <div class="d-flex mb-3">
+        <p class="text-dark font-weight-medium mb-0 mr-3">Tallas:</p>
+        <form>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="size-1" name="size">
+                <label class="custom-control-label" for="size-1">XS</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="size-2" name="size">
+                <label class="custom-control-label" for="size-2">S</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="size-3" name="size" checked>
+                <label class="custom-control-label" for="size-3">M</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="size-4" name="size">
+                <label class="custom-control-label" for="size-4">L</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="size-5" name="size">
+                <label class="custom-control-label" for="size-5">XL</label>
+            </div>
+        </form>
+    </div>
+
+    <div class="d-flex mb-4">
+        <p class="text-dark font-weight-medium mb-0 mr-3">Colores:</p>
+        <form>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="color-1" name="color">
+                <label class="custom-control-label" for="color-1">Negro</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="color-2" name="color" checked>
+                <label class="custom-control-label" for="color-2">Blanco</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="color-3" name="color">
+                <label class="custom-control-label" for="color-3">Rojo</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="color-4" name="color">
+                <label class="custom-control-label" for="color-4">Azul</label>
+            </div>
+        </form>
+    </div>
+
+    <div class="d-flex align-items-center mb-4 pt-2">
+        <div class="input-group quantity mr-3" style="width: 130px;">
+            <div class="input-group-btn">
+                <button class="btn btn-primary btn-minus">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control bg-secondary text-center" value="1" id="detail-quantity" readonly>
+            <div class="input-group-btn">
+                <button class="btn btn-primary btn-plus">
+                    <i class="fa fa-plus"></i>
+                </button>
             </div>
         </div>
+        <button class="btn btn-primary px-3" id="add-to-cart-detail-btn">
+            <i class="fas fa-shopping-cart mr-1"></i> Añadir al Carrito
+        </button>
+    </div>
+
+    <div class="d-flex pt-2">
+        <p class="text-dark font-weight-medium mb-0 mr-2">Compartir en:</p>
+        <div class="d-inline-flex">
+            <a class="text-dark px-2" href=""><i class="fab fa-facebook-f"></i></a>
+            <a class="text-dark px-2" href=""><i class="fab fa-twitter"></i></a>
+            <a class="text-dark px-2" href=""><i class="fab fa-linkedin-in"></i></a>
+            <a class="text-dark px-2" href=""><i class="fab fa-pinterest"></i></a>
+        </div>
+    </div>
+</div>
+
         <div class="row px-xl-5">
             <div class="col">
                 <div class="nav nav-tabs justify-content-center mb-4">
@@ -423,9 +434,7 @@
         </div>
     </div>
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
@@ -434,6 +443,17 @@
     <script src="mail/contact.js"></script>
 
     <script src="js/main.js"></script>
+
+     <script>
+$(document).ready(function() {
+    $('#product-carousel').on('slid.bs.carousel', function() {
+        var activeItem = $('#product-carousel .carousel-item.active');
+        $('#product-name').text(activeItem.data('name'));
+        $('#product-price').text(activeItem.data('price'));
+        $('#product-description').text(activeItem.data('description'));
+    });
+});
+</script>
 </body>
 
 </html>
