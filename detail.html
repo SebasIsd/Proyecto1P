@@ -169,16 +169,16 @@
                         data-short-description="Vestido de seda premium, corte elegante y ajuste perfecto. Ideal para eventos formales o una noche de lujo."
                         data-additional="Este vestido está confeccionado principalmente en Chifón o Gasa de Poliéster, proporcionando un acabado vaporoso y etéreo, e incluye un forro interior para mayor comodidad. El largo midi y el corte con volantes le otorgan un estilo romántico y elegante. Se recomienda lavar a mano o en ciclo delicado para proteger la caída y la textura del tejido, y cuenta con un cierre de cremallera oculta en la espalda."
                         data-long-description="Un vestido que evoca la frescura y la ligereza de la temporada. Este Vestido Midi presenta un hermoso y sutil estampado abstracto o floral en suaves tonos de lavanda y malva sobre un tejido vaporoso y translúcido. El diseño destaca por sus tirantes anchos con volantes que cubren delicadamente los hombros y el escote, añadiendo un toque romántico y femenino. Su corte es ajustado en la parte superior y cae con suavidad hasta la pantorrilla, con una falda fluida y escalonada que crea un movimiento etéreo al caminar. Perfecto para eventos de día, bodas en jardín o paseos de verano.">
-    <img class="w-100 h-100" src="img/vestido.jpg" alt="Image">
-</div>
-<div class="carousel-item" data-name="Poncho Elegante" 
+                        <img class="w-100 h-100" src="img/vestido.jpg" alt="Image">
+                        </div>
+                        <div class="carousel-item" data-name="Poncho Elegante" 
 data-price="$250.00" 
 data-short-description="Poncho elegante con diseño único, perfecto para ocasiones especiales."
 data-additional="Elaborado en un punto grueso y suave, como Acrílico, este poncho ofrece una calidez acogedora. Su diseño es unitalla (talla única) y presenta un patrón geométrico a cuadros en tonos neutros. Por su naturaleza, se recomienda lavar a mano con agua fría y secar en plano para mantener su forma y evitar que se estire. Es el accesorio ideal para un look casual y de capas en las temporadas más frescas."
 data-long-description="Este elegante y acogedor poncho o chal es la pieza ideal para añadir estilo y calidez a cualquier atuendo. Confeccionado en un punto grueso y suave, presenta un diseño amplio y asimétrico que se adapta a varias tallas y siluetas. El patrón se destaca por un gran diseño a cuadros o rejilla en tonos contrastantes, como el beige/topo y el negro, que le otorgan un aire moderno y atemporal. Su caída fluida y cuello en V abierto permiten usarlo sobre suéteres, blusas o abrigos ligeros, convirtiéndolo en un accesorio esencial para las estaciones de transición y el invierno.">
     <img class="w-100 h-100" src="img/poncho.jpg" alt="Image">
 </div>
-<div class="carousel-item" data-name="Producto 3" 
+<div class="carousel-item" data-name="Camisa Hawaiana" 
 data-price="$300.00" 
 data-short-description="Camisa elegante para su bebé"
 data-long-description="¡Lleva el estilo tropical a un nuevo nivel con esta Camisa Hawaiana de diseño vibrante! Perfecta para tu bebé, esta prenda de manga corta presenta un estampado llamativo de palmeras en tonos rosas, azules y morados intensos sobre un fondo negro profundo. Con un corte de cuello clásico y botones frontales a juego, es ideal para un día de playa, una fiesta de verano o cualquier ocasión en la que quieras que tu pequeño destaque. Su diseño fresco y alegre asegura comodidad y un look único."
@@ -301,7 +301,7 @@ data-additional="Confeccionada en un tejido ligero, idealmente 100% Algodón o u
                         <h4 class="mb-3">Descripción del Producto</h4>
                         <p id="product-long-description">Un vestido que evoca la frescura y la ligereza
                              de la temporada. Este Vestido Midi presenta un hermoso y sutil estampado abstracto o floral en suaves tonos de lavanda y malva sobre un tejido vaporoso y translúcido. El diseño destaca por sus tirantes anchos con volantes que cubren delicadamente los hombros y el escote, añadiendo un toque romántico y femenino. Su corte es ajustado en la parte superior y cae con suavidad hasta la pantorrilla, con una falda fluida y escalonada que crea un movimiento etéreo al caminar. Perfecto para eventos de día, bodas en jardín o paseos de verano.</p>
-                        <p>Et stet dolor nonumy et nonumy stet, et stet diam et lorem. Dolor at sed et dolor et.</p>
+                        
                     </div>
                     <div class="tab-pane fade" id="tab-pane-2">
                         <h4 class="mb-3">Información Adicional</h4>
@@ -366,6 +366,8 @@ data-additional="Confeccionada en un tejido ligero, idealmente 100% Algodón o u
             </div>
         </div>
     </div>
+ 
+
     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
@@ -429,6 +431,7 @@ data-additional="Confeccionada en un tejido ligero, idealmente 100% Algodón o u
             </div>
         </div>
     </div>
+    <!-- Footer End -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -442,14 +445,14 @@ data-additional="Confeccionada en un tejido ligero, idealmente 100% Algodón o u
 
 <script>
 $(document).ready(function() {
-    // Función para convertir data-additional en lista
+    
     function renderAdditional(additionalText) {
-        var items = additionalText.split('.'); // separar por puntos
+        var items = additionalText.split('.'); 
         var html = '';
         items.forEach(function(item) {
             var trimmed = item.trim();
             if(trimmed.length > 0){
-                html += '<li>' + trimmed + '.</li>'; // agregar punto al final de cada li
+                html += '<li>' + trimmed + '.</li>'; 
             }
         });
         $('#product-additional-list').html(html);
