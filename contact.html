@@ -195,34 +195,28 @@
         <div class="row px-xl-5">
             <div class="col-lg-7 mb-5">
                 <div class="contact-form">
-                    <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                        <div class="control-group">
-                            <input type="text" class="form-control" id="name" placeholder="Tu Nombre"
-                                required="required" data-validation-required-message="Por favor, ingresa tu nombre" />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="control-group">
-                            <input type="email" class="form-control" id="email" placeholder="Tu Correo Electrónico"
-                                required="required" data-validation-required-message="Por favor, ingresa tu correo electrónico" />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="control-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Asunto"
-                                required="required" data-validation-required-message="Por favor, ingresa un asunto" />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="control-group">
-                            <textarea class="form-control" rows="6" id="message" placeholder="Mensaje"
-                                required="required"
-                                data-validation-required-message="Por favor, ingresa tu mensaje"></textarea>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Enviar Mensaje</button>
-                        </div>
-                    </form>
-                </div>
+  <div id="formAlert"></div>
+
+  <form id="contactForm" novalidate>
+    <div class="control-group">
+      <input type="text" class="form-control" id="name" placeholder="Tu Nombre" required />
+    </div>
+    <div class="control-group">
+      <input type="email" class="form-control" id="email" placeholder="Tu Correo Electrónico" required />
+    </div>
+    <div class="control-group">
+      <input type="text" class="form-control" id="subject" placeholder="Asunto" required />
+    </div>
+    <div class="control-group">
+      <textarea class="form-control" rows="6" id="message" placeholder="Mensaje" required></textarea>
+    </div>
+    <div>
+      <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Enviar Mensaje</button>
+    </div>
+  </form>
+</div>
+
+
             </div>
             <div class="col-lg-5 mb-5">
                 <div class="d-flex flex-column mb-3">
@@ -367,10 +361,49 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script> 
+   
 
     <script src="js/main.js"></script>
+
+    <script>
+(function () {
+  var form = document.getElementById('contactForm');
+  var box  = document.getElementById('formAlert');
+  var btn  = document.getElementById('sendMessageButton');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Validación mínima del navegador
+    if (!form.checkValidity()) {
+      form.classList.add('was-validated');
+      return;
+    }
+
+    // Simulación simple de envío
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    setTimeout(function () {
+      // Mensaje fijo solicitado
+      box.innerHTML = `
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          Mensaje enviado al sitio <strong>svj@support.com</strong>.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>`;
+      form.reset();
+      form.classList.remove('was-validated');
+      btn.disabled = false;
+      btn.textContent = 'Enviar Mensaje';
+    }, 600);
+  });
+})();
+</script>
+
 </body>
 
 </html>
