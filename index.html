@@ -141,10 +141,16 @@
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contactos</a>
                     </div>
-                    <div class="navbar-nav ml-auto py-0">
-                        <a href="" class="nav-item nav-link">Iniciar Sesión</a>
-                        <a href="" class="nav-item nav-link">Registrar</a>
-                    </div>
+                        <div class="navbar-nav ml-auto py-0">
+                            <div id="logged-out" style="display: flex;">
+                                <a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#loginModal">Iniciar Sesión</a>
+                                <a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#registerModal">Registrarse</a>
+                            </div>
+                            <div id="logged-in" style="display: flex;">
+                                <span class="nav-item nav-link" id="user-name"></span>
+                                <a href="#" class="nav-item nav-link" id="logout">Cerrar Sesión</a>
+                            </div>
+                        </div>
                 </div>
             </nav>
             <div id="header-carousel" class="carousel slide" data-ride="carousel">
@@ -308,6 +314,68 @@
         </div>
     </div>
     <!-- Offer End -->
+
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Ingrese su correo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Ingrese su contraseña" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Registrarse</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="registerName">Nombre</label>
+                            <input type="text" class="form-control" id="registerName" placeholder="Ingrese su nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="registerEmail" placeholder="Ingrese su correo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Contraseña</label>
+                            <input type="password" class="form-control" id="registerPassword" placeholder="Ingrese su contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerConfirmPassword">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="registerConfirmPassword" placeholder="Confirme su contraseña" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <!-- Products Start -->
@@ -919,6 +987,63 @@ document.querySelectorAll('.btn-view').forEach(btn => {
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+        <script>
+        function updateNavbar() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const username = localStorage.getItem('username') || '';
+            if (isLoggedIn) {
+                $('#logged-out').hide();
+                $('#logged-in').show();
+                $('#user-name').text(`Bienvenido, ${username}`);
+            } else {
+                $('#logged-out').show();
+                $('#logged-in').hide();
+            }
+        }
+
+        // Handle Login Form Submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const username = email.split('@')[0]; // Fake username from email
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('username', username);
+            alert('¡Inicio de sesión exitoso!');
+            $('#loginModal').modal('hide');
+            updateNavbar();
+        });
+
+        // Handle Register Form Submission
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            const username = document.getElementById('registerName').value;
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden.');
+            } else {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('username', username);
+                alert('¡Registro exitoso!');
+                $('#registerModal').modal('hide');
+                updateNavbar();
+            }
+        });
+
+        // Handle Logout
+        document.getElementById('logout').addEventListener('click', function(event) {
+            event.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            alert('¡Sesión cerrada!');
+            updateNavbar();
+        });
+
+        // Initialize navbar state on page load
+        $(document).ready(function() {
+            updateNavbar();
+        });
+    </script>
 </body>
 
 </html>
