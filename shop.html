@@ -108,6 +108,7 @@
                         <a href="" class="nav-item nav-link">Blazers</a>
                         <a href="" class="nav-item nav-link">Chaquetas</a>
                         <a href="" class="nav-item nav-link">Zapatos</a>
+                        <a href="" class="nav-item nav-link">Acsesorios</a>
                     </div>
                 </nav>
             </div>
@@ -285,7 +286,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1" data-category="camisetas">
                         <div class="card product-item border-0 mb-4" data-id="1" data-name="Camisa Elegante" data-price="17.99">
                             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                 <img class="img-fluid w-100" src="img/camizaElegante.png" alt="">
@@ -303,7 +304,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1" data-category="zapatos">
                         <div class="card product-item border-0 mb-4" data-id="2" data-name="Zapatos Casuales" data-price="220.00">
                             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                 <img class="img-fluid w-100" src="img/zapatosCasuales.webp" alt="">
@@ -321,7 +322,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1" data-category="jeans">
                         <div class="card product-item border-0 mb-4" data-id="3" data-name="Jeans Ajustados" data-price="80.00">
                             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                 <img class="img-fluid w-100" src="img/pantalonesAjustados.avif" alt="">
@@ -339,7 +340,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1" data-category="vestidos">
                         <div class="card product-item border-0 mb-4" data-id="4" data-name="Vestido de Mujer" data-price="45.00">
                             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                 <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
@@ -357,7 +358,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1" data-category="zapatos">
                         <div class="card product-item border-0 mb-4" data-id="5" data-name="Zapatos de Invierno" data-price="99.99">
                             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                 <img class="img-fluid w-100" src="img/zapatosInvierno-2.webp" alt="">
@@ -375,15 +376,15 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4" data-id="6" data-name="Reloj de Lujo" data-price="350.00">
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1" >
+                        <div class="card product-item border-0 mb-4" data-id="6" data-name="Reloj de Lujo" data-price="150.00">
                             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                 <img class="img-fluid w-100" src="img/reloj-2.webp" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                 <h6 class="text-truncate mb-3">Reloj de Lujo</h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$35.00</h6><h6 class="text-muted ml-2"><del>$40.00</del></h6>
+                                    <h6>$150.00</h6><h6 class="text-muted ml-2"><del>$170.00</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
@@ -587,6 +588,49 @@ document.addEventListener('DOMContentLoaded', () => {
   searchInput.addEventListener('input', searchProducts);
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const categoriaLinks = document.querySelectorAll(
+        ".navbar-nav .nav-item.nav-link, .navbar-nav .dropdown-item"
+    );
+    const productos = document.querySelectorAll("[data-category]");
+
+    categoriaLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            const categoria = this.textContent.trim().toLowerCase();
+
+            // Solo filtrar si existe algún producto con esa categoría
+            const hayCategoria = Array.from(productos).some(prod =>
+                (prod.getAttribute("data-category") || "").toLowerCase().includes(categoria)
+            );
+
+            if (hayCategoria) {
+                e.preventDefault(); // ✅ Solo bloquea el click si es categoría
+                productos.forEach(prod => {
+                    const categoriaProd = (prod.getAttribute("data-category") || "").toLowerCase();
+
+                    if (
+                        categoriaProd.includes(categoria) ||
+                        categoria.includes(categoriaProd) ||
+                        categoriaProd.includes(categoria.slice(0, -1)) ||
+                        categoria.includes(categoriaProd.slice(0, -1))
+                    ) {
+                        prod.style.display = "block";
+                    } else {
+                        prod.style.display = "none";
+                    }
+                });
+
+                const titulo = document.querySelector("#tituloTienda");
+                if (titulo)
+                    titulo.textContent =
+                        categoria.charAt(0).toUpperCase() + categoria.slice(1);
+            }
+        });
+    });
+});
+</script>
+
 
 </body>
 
