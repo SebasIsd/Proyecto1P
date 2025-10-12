@@ -129,18 +129,18 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Inicio</a>
-                        <a href="shop.html" class="nav-item nav-link">Tienda</a>
-                        <a href="detail.html" class="nav-item nav-link">Detalles de Tienda</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="cart.html" class="dropdown-item">Carrito</a>
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                            <a href="shop.html" class="nav-item nav-link">Tienda</a>
+                            <a href="detail.html" class="nav-item nav-link">Detalles de Tienda</a>
+                            <div class="nav-item dropdown" id="pagesDropdown" style="display: none;">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="cart.html" class="dropdown-item">Carrito</a>
+                                </div>
                             </div>
+                            <a href="contact.html" class="nav-item nav-link">Contactos</a>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contactos</a>
-                    </div>
                         <div class="navbar-nav ml-auto py-0">
                             <div id="logged-out" style="display: flex;">
                                 <a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#loginModal">Iniciar Sesión</a>
@@ -987,7 +987,7 @@ document.querySelectorAll('.btn-view').forEach(btn => {
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-        <script>
+    <script>
         function updateNavbar() {
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             const username = localStorage.getItem('username') || '';
@@ -995,9 +995,11 @@ document.querySelectorAll('.btn-view').forEach(btn => {
                 $('#logged-out').hide();
                 $('#logged-in').show();
                 $('#user-name').text(`Bienvenido, ${username}`);
+                $('#pagesDropdown').show();
             } else {
                 $('#logged-out').show();
                 $('#logged-in').hide();
+                $('#pagesDropdown').hide();
             }
         }
 
