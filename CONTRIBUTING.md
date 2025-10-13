@@ -1,58 +1,77 @@
-# Guía de Contribución
+# 🤝 Guía de Contribución
 
-¡Gracias por interesarte en contribuir a este proyecto! A continuación, se detallan los pasos para colaborar de manera efectiva.
+¡Gracias por tu interés en contribuir a este proyecto! 🙌  
+Tu ayuda es fundamental para mejorar y mantener este e-commerce 💻
 
-## Cómo Contribuir
+---
 
-1. **Haz un Fork del Repositorio**
-   - Haz un fork del repositorio en tu cuenta de GitHub.
+## 🚀 Cómo Contribuir
 
-2. **Clona tu Fork**
-   - Clona tu versión localmente:
-     ```
-     git clone https://github.com/[TU-USUARIO]/Proyecto1P.git
-     cd Proyecto1P
-     ```
+1. **Haz un Fork del Repositorio** 🍴  
+   - Desde GitHub, haz un fork del proyecto en tu cuenta.
 
-3. **Crea una Nueva Rama**
-   - Crea una rama para tu contribución:
-     ```
-     git checkout -b feature/nueva-funcionalidad
-     ```
+2. **Clona tu Fork** 💾  
+   ```bash
+   git clone https://github.com/[TU-USUARIO]/Proyecto1P.git
+   cd Proyecto1P
+   ```
 
-4. **Realiza tus Cambios**
-   - Edita los archivos (HTML, CSS, JS, etc.) según necesites.
-   - Asegúrate de probar los cambios abriendo los archivos en un navegador.
-   - Actualiza el `.gitignore` si es necesario.
+3. **Crea una Nueva Rama** 🌿  
+   ```bash
+   git checkout -b feature/nueva-funcionalidad
+   ```
 
-5. **Confirma tus Cambios**
-   - Haz commit de tus cambios con un mensaje descriptivo:
-     ```
-     git commit -m "Agrega nueva funcionalidad [descripción]"
-     ```
+4. **Realiza tus Cambios** ✏️  
+   - Edita los archivos necesarios (HTML, CSS, JS, etc.).
+   - Prueba tus cambios abriendo los archivos en un navegador.
+   - Si agregas dependencias, actualiza el `.gitignore` o crea una carpeta `/lib/` si aplica.
 
-6. **Empuja tus Cambios**
-   - Sube tu rama al fork:
-     ```
-     git push origin feature/nueva-funcionalidad
-     ```
+5. **Haz Commit con un Mensaje Claro** 📝  
+   ```bash
+   git commit -m "✨ Agrega nueva funcionalidad: [descripción breve]"
+   ```
 
-7. **Abre un Pull Request (PR)**
-   - Ve a GitHub y abre un PR desde tu rama hacia la rama `develop` del repositorio original.
-   - Describe claramente los cambios realizados y por qué son necesarios.
+6. **Sube tus Cambios a GitHub** ☁️  
+   ```bash
+   git push origin feature/nueva-funcionalidad
+   ```
 
-## Convenciones de Código
-- Usa 2 espacios para indentación en HTML y CSS.
-- Escribe comentarios en español para explicar cambios importantes.
-- Nombra archivos en minúsculas con guiones (ej. `cart.html`).
-- Asegúrate de que las imágenes en `/img/` tengan nombres descriptivos.
+7. **Abre un Pull Request (PR)** 🔄  
+   - Desde tu repositorio, abre un PR hacia la rama `develop`.
+   - Explica claramente los cambios realizados y su propósito.
 
-## Reportar Problemas
-- Abre un issue en [GitHub Issues](https://github.com/SebasIsd/Proyecto1P/issues) si encuentras errores o tienes sugerencias.
-- Incluye detalles como pasos para reproducir el problema.
+---
 
-## Revisión de Pull Requests
-- Los PRs serán revisados por el lider principal.
-- Se priorizarán cambios que mejoren la funcionalidad del sitio (ej. carrito, detalles de productos).
+## 🧠 Convenciones de Código
 
-*¡Gracias por tu contribución!*
+- Usa **2 espacios** para la indentación.
+- Escribe comentarios en **español** para explicar secciones importantes.
+- Nombra archivos en **minúsculas con guiones** (ej. `cart.html`).
+- Las imágenes en `/img/` deben tener **nombres descriptivos**.
+- Mantén un estilo limpio y legible en el código.
+
+---
+
+## 🐛 Reportar Problemas
+
+Si encuentras un error o una mejora posible:
+1. Abre un issue en [GitHub Issues](https://github.com/SebasIsd/Proyecto1P/issues)
+2. Incluye:
+   - Pasos para reproducir el error 🧩
+   - Capturas de pantalla (si aplica) 📷
+   - Descripción clara del problema o sugerencia 💬
+
+---
+
+## 🔍 Revisión de Pull Requests
+
+- Todos los PR serán revisados por el **líder del proyecto** 👨‍💻  
+- Se priorizan los cambios que:
+  - Mejoren la funcionalidad 🧠  
+  - Corrijan errores críticos ⚙️  
+  - Aumenten la legibilidad o la experiencia de usuario 🎨  
+
+---
+
+✨ *Gracias por contribuir y ser parte del proyecto.*  
+¡Cada aporte cuenta para mejorar esta experiencia e-commerce! 💪🛍️
