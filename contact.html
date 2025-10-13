@@ -11,64 +11,73 @@
     <link href="img/favicon.ico" rel="icon">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
-    <style>/* ==================================== */
-/* HOVER PARA LA SECCIÓN DEL EQUIPO (Team Carousel) */
-/* ==================================== */
+    <style>
+        /* ==================================== */
+        /* HOVER PARA LA SECCIÓN DEL EQUIPO (Team Carousel) */
+        /* ==================================== */
 
-.team-item .position-relative {
-    overflow: hidden; 
-}
+        .team-item .position-relative {
+            overflow: hidden;
+        }
 
-.team-item .team-social {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0; /* Oculto por defecto */
-    background: rgba(255, 255, 255, 0.85); /* Fondo semitransparente al hacer hover */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s ease;
-}
+        .team-item .team-social {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            /* Oculto por defecto */
+            background: rgba(255, 255, 255, 0.85);
+            /* Fondo semitransparente al hacer hover */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
 
-/* Mostrar la capa social al hacer hover sobre el contenedor principal */
-.team-item:hover .team-social {
-    opacity: 1;
-}
+        /* Mostrar la capa social al hacer hover sobre el contenedor principal */
+        .team-item:hover .team-social {
+            opacity: 1;
+        }
 
-/* Efecto de animación para los iconos (opcional) */
-.team-item .team-social a {
-    transform: translateY(20px);
-    opacity: 0;
-    transition: 0.3s ease;
-}
+        /* Efecto de animación para los iconos (opcional) */
+        .team-item .team-social a {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: 0.3s ease;
+        }
 
-.team-item:hover .team-social a:nth-child(1) {
-    transform: translateY(0);
-    opacity: 1;
-    transition-delay: 0.1s;
-}
+        .team-item:hover .team-social a:nth-child(1) {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.1s;
+        }
 
-.team-item:hover .team-social a:nth-child(2) {
-    transform: translateY(0);
-    opacity: 1;
-    transition-delay: 0.2s;
-}
+        .team-item:hover .team-social a:nth-child(2) {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.2s;
+        }
 
-.team-item:hover .team-social a:nth-child(3) {
-    transform: translateY(0);
-    opacity: 1;
-    transition-delay: 0.3s;
-}</style>
+        .team-item:hover .team-social a:nth-child(3) {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.3s;
+        }
+
+        .contact-form .control-group {
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -106,7 +115,8 @@
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="index.html" class="text-decoration-none">
-                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
@@ -126,14 +136,18 @@
     <div class="container-fluid">
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+                    data-toggle="collapse" href="#navbar-vertical"
+                    style="height: 65px; margin-top: -1px; padding: 0 30px;">
                     <h6 class="m-0">Categorías</h6>
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
-                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
+                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light"
+                    id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-toggle="dropdown">Vestidos <i class="fa fa-angle-down float-right mt-1"></i></a>
+                            <a href="#" class="nav-link" data-toggle="dropdown">Vestidos <i
+                                    class="fa fa-angle-down float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
                                 <a href="" class="dropdown-item">Vestidos de Hombre</a>
                                 <a href="" class="dropdown-item">Vestidos de Mujer</a>
@@ -155,7 +169,8 @@
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <a href="index.html" class="text-decoration-none d-block d-lg-none">
-                        <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                        <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                                class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
                     </a>
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
@@ -195,42 +210,50 @@
         <div class="row px-xl-5">
             <div class="col-lg-7 mb-5">
                 <div class="contact-form">
-  <div id="formAlert"></div>
+                    <div id="formAlert"></div>
 
-  <form id="contactForm" novalidate>
-    <div class="control-group">
-      <input type="text" class="form-control" id="name" placeholder="Tu Nombre" required />
-    </div>
-    <div class="control-group">
-      <input type="email" class="form-control" id="email" placeholder="Tu Correo Electrónico" required />
-    </div>
-    <div class="control-group">
-      <input type="text" class="form-control" id="subject" placeholder="Asunto" required />
-    </div>
-    <div class="control-group">
-      <textarea class="form-control" rows="6" id="message" placeholder="Mensaje" required></textarea>
-    </div>
-    <div>
-      <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Enviar Mensaje</button>
-    </div>
-  </form>
-</div>
+                    <form id="contactForm" novalidate>
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="name" placeholder="Tu Nombre" required />
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control" id="email" placeholder="Tu Correo Electrónico"
+                                required />
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="subject" placeholder="Asunto" required />
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control" rows="6" id="message" placeholder="Mensaje"
+                                required></textarea>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Enviar
+                                Mensaje</button>
+                        </div>
+                    </form>
+                </div>
 
 
             </div>
             <div class="col-lg-5 mb-5">
                 <div class="d-flex flex-column mb-3">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.839197989558!2d-78.62853652571559!3d-1.2693705987185415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d38225e088295f%3A0xb16c26da66e6e4b3!2sUniversidad%20T%C3%A9cnica%20de%20Ambato!5e0!3m2!1ses-419!2sec!4v1759794054700!5m2!1ses-419!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.839197989558!2d-78.62853652571559!3d-1.2693705987185415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d38225e088295f%3A0xb16c26da66e6e4b3!2sUniversidad%20T%C3%A9cnica%20de%20Ambato!5e0!3m2!1ses-419!2sec!4v1759794054700!5m2!1ses-419!2sec"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="d-flex flex-column mb-3">
                     <p class="text-secondary text-uppercase mb-2">Oficina Principal</p>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Avenida los chásquis, Ambato, ECU</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Avenida los chásquis, Ambato,
+                        ECU</p>
                     <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>sdsnt2003@gmail.com</p>
                     <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+593 345 67890</p>
                 </div>
                 <div class="d-flex flex-column">
                     <p class="text-secondary text-uppercase mb-2">Soporte al Cliente</p>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Av. Bolivariana, Ambato, ECU</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Av. Bolivariana, Ambato, ECU
+                    </p>
                     <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>support@gmail.com</p>
                     <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+593 345 67891</p>
                 </div>
@@ -244,15 +267,21 @@
         <div class="row px-xl-5">
             <div class="col">
                 <div class="owl-carousel team-carousel">
-                    
+
                     <div class="team-item text-center">
-                        <div class="position-relative overflow-hidden mb-4" style="height: 250px; width: 250px; margin: 0 auto;">
-                            <img class="img-fluid w-100 h-100" src="img/yo.jpg" alt="Desarrollador 1" style="object-fit: cover;">
+                        <div class="position-relative overflow-hidden mb-4"
+                            style="height: 250px; width: 250px; margin: 0 auto;">
+                            <img class="img-fluid w-100 h-100" src="img/yo.jpg" alt="Desarrollador 1"
+                                style="object-fit: cover;">
                             <div class="team-social d-flex align-items-center justify-content-center">
-                              <a class="btn btn-outline-primary btn-square mr-2" href="https://github.com/SebasIsd"><i class="fab fa-github"></i></a>
-                              <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/sebas.santana.531037"><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-outline-primary btn-square" href="https://wa.me/593995781009" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                             </div>
+                                <a class="btn btn-outline-primary btn-square mr-2" href="https://github.com/SebasIsd"><i
+                                        class="fab fa-github"></i></a>
+                                <a class="btn btn-outline-primary btn-square mr-2"
+                                    href="https://www.facebook.com/sebas.santana.531037"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://wa.me/593995781009"
+                                    target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
                         </div>
                         <h5 class="font-weight-bold">Sebastian Santana</h5>
                         <p class="m-0">Líder de Desarrollo / Front-End</p>
@@ -260,13 +289,19 @@
                     </div>
 
                     <div class="team-item text-center">
-                        <div class="position-relative overflow-hidden mb-4" style="height: 250px; width: 250px; margin: 0 auto;">
-                            <img class="img-fluid w-100 h-100" src="img/vivi.jpg" alt="Desarrollador 2" style="object-fit: cover;">
+                        <div class="position-relative overflow-hidden mb-4"
+                            style="height: 250px; width: 250px; margin: 0 auto;">
+                            <img class="img-fluid w-100 h-100" src="img/vivi.jpg" alt="Desarrollador 2"
+                                style="object-fit: cover;">
                             <div class="team-social d-flex align-items-center justify-content-center">
-                              <a class="btn btn-outline-primary btn-square mr-2" href="https://github.com/maribelsailema"><i class="fab fa-github"></i></a>
-                              <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/viviana.sarco.7"><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-outline-primary btn-square" href="https://wa.me/593988519822" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                             </div>
+                                <a class="btn btn-outline-primary btn-square mr-2"
+                                    href="https://github.com/maribelsailema"><i class="fab fa-github"></i></a>
+                                <a class="btn btn-outline-primary btn-square mr-2"
+                                    href="https://www.facebook.com/viviana.sarco.7"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://wa.me/593988519822"
+                                    target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
                         </div>
                         <h5 class="font-weight-bold">Vivina Sarco</h5>
                         <p class="m-0">Encargada Back-End</p>
@@ -274,13 +309,18 @@
                     </div>
 
                     <div class="team-item text-center">
-                        <div class="position-relative overflow-hidden mb-4" style="height: 250px; width: 250px; margin: 0 auto;">
-                            <img class="img-fluid w-100 h-100" src="img/alex.jpg" alt="Desarrollador 3" style="object-fit: cover;">
+                        <div class="position-relative overflow-hidden mb-4"
+                            style="height: 250px; width: 250px; margin: 0 auto;">
+                            <img class="img-fluid w-100 h-100" src="img/alex.jpg" alt="Desarrollador 3"
+                                style="object-fit: cover;">
                             <div class="team-social d-flex align-items-center justify-content-center">
-                              <a class="btn btn-outline-primary btn-square mr-2" href="https://github.com/alexJonarey"><i class="fab fa-github"></i></a>
-                              <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-outline-primary btn-square" href="https://wa.me/593998316691" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                             </div>
+                                <a class="btn btn-outline-primary btn-square mr-2"
+                                    href="https://github.com/alexJonarey"><i class="fab fa-github"></i></a>
+                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://wa.me/593998316691"
+                                    target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
                         </div>
                         <h5 class="font-weight-bold">Alex Reyes</h5>
                         <p class="m-0">Experto en soporte técnico y Back-End</p>
@@ -294,13 +334,14 @@
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
                 <a href="" class="text-decoration-none">
-                    <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Shopper</h1>
+                    <h1 class="mb-4 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Shopper</h1>
                 </a>
                 <p>Comprometidos con el estilo y la calidad. ¡Vístete con nosotros!</p>
                 <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Ambato, Ecuador</p>
                 <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>svj@support.com</p>
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+593 345 67890</p>
-            </div> 
+            </div>
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     <div class="col-md-4 mb-5">
@@ -308,27 +349,35 @@
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                             <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
-                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Detalles de tienda</a>
-                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Carrito de compras</a>
-                            <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Compra final</a>
+                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Detalles
+                                de tienda</a>
+                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Carrito de
+                                compras</a>
+                            <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Compra
+                                final</a>
                             <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contactos</a>
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Informacón o ayuda</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Quiénes Somos</a>
-                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i> Política de Devoluciones, Envíos y Entregas</a>
-                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Preguntas Frecuentes (FAQ)</a>
-                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Aviso de Privacidad</a>
-                   
+                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Quiénes
+                                Somos</a>
+                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i> Política
+                                de Devoluciones, Envíos y Entregas</a>
+                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Preguntas
+                                Frecuentes (FAQ)</a>
+                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Aviso de
+                                Privacidad</a>
+
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Suscríbete y Ahorra</h5>
                         <form action="">
                             <div class="form-group">
-                                <input type="text" class="form-control border-0 py-4" placeholder="Tu Nombre" required="required" />
+                                <input type="text" class="form-control border-0 py-4" placeholder="Tu Nombre"
+                                    required="required" />
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control border-0 py-4" placeholder="Tu correo"
@@ -361,48 +410,48 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-   
+
 
     <script src="js/main.js"></script>
 
     <script>
-(function () {
-  var form = document.getElementById('contactForm');
-  var box  = document.getElementById('formAlert');
-  var btn  = document.getElementById('sendMessageButton');
+        (function () {
+            var form = document.getElementById('contactForm');
+            var box = document.getElementById('formAlert');
+            var btn = document.getElementById('sendMessageButton');
 
-  if (!form) return;
+            if (!form) return;
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
 
-    // Validación mínima del navegador
-    if (!form.checkValidity()) {
-      form.classList.add('was-validated');
-      return;
-    }
+                // Validación mínima del navegador
+                if (!form.checkValidity()) {
+                    form.classList.add('was-validated');
+                    return;
+                }
 
-    // Simulación simple de envío
-    btn.disabled = true;
-    btn.textContent = 'Enviando...';
+                // Simulación simple de envío
+                btn.disabled = true;
+                btn.textContent = 'Enviando...';
 
-    setTimeout(function () {
-      // Mensaje fijo solicitado
-      box.innerHTML = `
+                setTimeout(function () {
+                    // Mensaje fijo solicitado
+                    box.innerHTML = `
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           Mensaje enviado al sitio <strong>svj@support.com</strong>.
           <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>`;
-      form.reset();
-      form.classList.remove('was-validated');
-      btn.disabled = false;
-      btn.textContent = 'Enviar Mensaje';
-    }, 600);
-  });
-})();
-</script>
+                    form.reset();
+                    form.classList.remove('was-validated');
+                    btn.disabled = false;
+                    btn.textContent = 'Enviar Mensaje';
+                }, 600);
+            });
+        })();
+    </script>
 
 </body>
 
